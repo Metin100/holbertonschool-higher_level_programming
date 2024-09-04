@@ -1,14 +1,7 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-num = number % 10
-if number > 0 and num != 0:
-    pass
-elif number < 0 and num != 0:
-    num = -10 + num
-else:
-    num = 0
-
+num = number % 10 if number >= 0 else number % 10 - 10
 print("Last digit of {} is {} ".format(number, num), end="")
 
 if num > 5:
