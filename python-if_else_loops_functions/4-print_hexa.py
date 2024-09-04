@@ -6,4 +6,4 @@ for i in range(99):
                 c = chr(k)
     else:
         c = i % 16
-    print(f"{i} = 0x{int(i / 16)}{c}")
+    print("{} = 0x{}{}".format(i,int(i / 16), c))
