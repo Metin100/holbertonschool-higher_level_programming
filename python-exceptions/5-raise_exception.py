@@ -1,2 +1,2 @@
 def raise_exception():
-    raise "Exception Raised"
+    raise "Exception has been raised"
