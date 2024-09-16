@@ -3,8 +3,10 @@
 
 class Square:
     """Class of square"""
+
     def __init__(self, __size):
-        """Function that equals size
+        """__init__ method that equals size
+
         Args:
             size (int): size of square
         """
