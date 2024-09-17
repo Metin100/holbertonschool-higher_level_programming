@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Define Square Class For Equaling Size"""
+"""Define a class Square with private instance attribute size."""
 
 
 class Square:
-    """Class of square"""
+    """Square class with private attribute size"""
     def __init__(self, size=0) -> None:
-        """__init__ method that equals size"""
+        """Initialize Square with size attribute"""
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -13,5 +13,5 @@ class Square:
         self.__size = size
 
     def area(self):
-        """Area method for returning square of size"""
+        """Area definer"""
         return self.__size ** 2
