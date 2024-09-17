@@ -3,10 +3,9 @@
 
 
 class Square:
-    """Class of square"""
-
-    def __init__(self, size=0) -> None:
-        """__init__ method that equals size"""
+     """Square class with private attribute size"""
+     def __init__(self, size=0) -> None:
+        """Initialize Square with size attribute"""
         if isinstance(size,str):
             raise TypeError("size must be an integer")
         elif size < 0:
