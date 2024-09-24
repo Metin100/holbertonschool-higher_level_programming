@@ -4,4 +4,4 @@
 
 def lookup(obj):
     """Function of printing objects"""
-    return list((obj))
+    return list(dir(obj))
