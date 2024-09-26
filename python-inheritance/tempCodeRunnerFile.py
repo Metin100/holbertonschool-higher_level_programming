@@ -1,1 +1,1 @@
-print(r.area())
+#!/usr/bin/python3
