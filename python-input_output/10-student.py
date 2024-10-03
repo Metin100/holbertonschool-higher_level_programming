@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """File"""
-import json
 
 
 class Student:
@@ -12,7 +11,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """function of making to json"""
-        if attrs == None:
+        if attrs is None:
             return self.__dict__
         else:
             new = dict()
