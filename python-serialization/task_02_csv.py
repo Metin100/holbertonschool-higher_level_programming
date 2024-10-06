@@ -10,18 +10,22 @@ def convert_csv_to_json(filename):
     """Function to convert CSV to JSON"""
 
     try:
-        with open(filename, 'r') as f:
-            data = csv.DictReader(f)
+        # Reading the csv file
+        with open(filename, 'r') as file:
+            reader = csv.DictReader(file)
 
-            data1 = list(data)
+            # Changing content to list
+            data = list(reader)
 
-        json_file = 'data.json'
-
-        with open(json_file, 'w') as f:
-            json.dumps(f, data, indent=4)
+        # Writing content as JSON to the file
+        json_filename = 'data.json'
+        with open(json_filename, 'w') as file:
+            json.dump(data, file, indent=4)
             return True
+
+    # Exception handling
     except Exception as e:
-        print(f'Exception: {e}')
+        print("An error occurred:", e)
         return False
 
 
