@@ -6,7 +6,6 @@ import json
 class BasicServer(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
-
         if self.path == '/':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
@@ -27,10 +26,10 @@ class BasicServer(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'404 Error Found')
+            self.wfile.write(b'FAIL - Undefined endpoint')  # Hata mesajı düzeltildi
 
 
 server = ('', 8000)
 httpd = http.server.HTTPServer(server, BasicServer)
-print('Hello')
+print('Server is running on port 8000...')
 httpd.serve_forever()
