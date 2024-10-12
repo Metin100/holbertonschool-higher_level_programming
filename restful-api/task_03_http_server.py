@@ -24,10 +24,9 @@ class BasicServer(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b'OK')
         else:
             self.send_response(404)
-            self.send_header('Content-type', 'application/json')  # Hata mesajı için içerik türü
+            self.send_header('Content-type', 'text/plain') 
             self.end_headers()
-            error_response = {"error": "404 Not Found", "message": "FAIL - Undefined endpoint"}  # JSON formatında hata yanıtı
-            self.wfile.write(json.dumps(error_response).encode('utf-8'))  # Hata yanıtını JSON olarak gönderiyoruz
+            self.wfile.write(b'Endpoint not found') 
 
 
 server = ('', 8000)
