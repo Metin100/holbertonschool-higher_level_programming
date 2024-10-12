@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import http.server
 import json
+import socketserver
 
 
 class basicServer(http.server.BaseHTTPRequestHandler):
@@ -29,7 +30,6 @@ class basicServer(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b'FAIL - Undefined endpoint returned incorrect content')
 
-server = ('', 8000)
-httpd = http.server.HTTPServer(server, basicServer)
-print('Hello')
-httpd.serve_forever()
+with socketserver.TCPServer(("", 8000), basicServer) as httpd:
+    print(f"Serving at port {8000}")
+    httpd.serve_forever()
