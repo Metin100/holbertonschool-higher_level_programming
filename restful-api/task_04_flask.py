@@ -1,46 +1,50 @@
 #!/usr/bin/python3
-from flask import Flask, jsonify, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-users = {}
+all_users = {}
 
 
 @app.route('/')
 def home():
     return 'Welcome to the Flask API!'
 
+
 @app.route('/data')
 def data():
-    ret_data = list(users)
-    return jsonify(ret_data)
+    usernames = list(all_users)
+    return jsonify(usernames)
 
-@app.route('/add_user', methods="POST")
+
+@app.route('/add_user', methods=['POST'])
 def add_user():
-    data = request.json()
+    data = request.json
     if data is None or data.get('username') is None:
-        return jsonify({'error':'Username is required'}), 400
+        return jsonify({'error': 'Username is required'}), 400
     user = {
         'username': data.get('username'),
-        'age': data.get('age'),
         'name': data.get('name'),
+        'age': data.get('age'),
         'city': data.get('city')
     }
-    users[user.get('username')] = user
+    all_users[user.get('username')] = user
     return jsonify({'message': 'User added', 'user': user}), 201
 
+
 @app.route('/users/<username>')
-def username(username):
+def user(username):
     if username is None:
-        return jsonify({'error':'Username is not entered'}), 400
-    if username not in users:
-        return jsonify({'error': "Username can't find in data"}), 404
-    return jsonify(users[username])
+        return jsonify({'error': 'Username is required'}), 400
+    if username not in all_users:
+        return jsonify({"error": "User not found"}), 404
+    return jsonify(all_users[username])
 
 
-@app.route('status')
+@app.route('/status')
 def status():
-    return 'OK'
+    return "OK"
+
 
 if __name__ == "__main__":
     app.run()
