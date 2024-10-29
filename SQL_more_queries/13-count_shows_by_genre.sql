@@ -6,7 +6,7 @@ tv_show_genres AS m
 INNER JOIN 
 tv_genres as g 
 ON 
-m.show_id=g.id
+m.genre_id=g.id
 GROUP BY 
 g.id
 ORDER BY 
