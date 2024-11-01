@@ -18,4 +18,9 @@ if __name__ == "__main__":
 
     try:
         mycursor.execute("""SELECT * FROM states ORDER BY id""")
-        
+        rows = mycursor.fetchall()
+
+    except MySQLdb.Error as e:
+        print(e)
+
+    
