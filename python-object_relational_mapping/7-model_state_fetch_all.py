@@ -1,31 +1,28 @@
 #!/usr/bin/python3
-"""
-Module for fetching all states from the database using SQLAlchemy ORM.
-"""
+from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sys import argv
-
 from model_state import Base, State
 
-# Run only executed
 if __name__ == "__main__":
-
-    # Engine creation with mysql and mysqldb DBAPI
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                           .format(argv[1], argv[2], argv[3]))
-
-    # Creating all classes in DB
+    # Retrieve command line arguments
+    username = argv[1]
+    password = argv[2]
+    db_name = argv[3]
+    
+    # Set up the engine and session
+    engine = create_engine(f'mysql+mysqlconnector://{username}:{password}@localhost:3306/{db_name}')
     Base.metadata.create_all(engine)
 
-    # Creating Session and its instance
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    # Printing the result
-    for state in session.query(State).order_by(State.id):
-        print("{}: {}".format(state.id, state.name))
-
-    # Closing the session
-    if session:
-        session.close()
+    
+    # Query all State objects in ascending order by id
+    states = session.query(State).order_by(State.id).all()
+    
+    # Print each state's id and name
+    for state in states:
+        print(f"{state.id}: {state.name}")
+    
+    # Close the session
+    session.close()
