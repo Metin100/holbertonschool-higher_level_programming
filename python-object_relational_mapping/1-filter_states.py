@@ -3,6 +3,7 @@
 Connecting to database and listing words which are starting with uppercase N
 """
 
+
 if __name__ == "__main__":
     import MySQLdb
     from sys import argv
