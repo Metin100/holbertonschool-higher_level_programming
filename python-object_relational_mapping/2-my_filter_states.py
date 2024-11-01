@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     for row in rows:
         if row[1] == argv[4]:
-            print(row)  
+            print(row)
 
     mycursor.close()
     db.close()
