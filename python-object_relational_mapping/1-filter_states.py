@@ -23,4 +23,6 @@ if __name__ == "__main__":
     except MySQLdb.Error as e:
         print(e)
 
-    
+    for row in rows:
+        if row[1][0] == 'N':
+            print(row)
