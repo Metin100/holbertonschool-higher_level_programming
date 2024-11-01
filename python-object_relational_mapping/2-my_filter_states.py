@@ -17,7 +17,10 @@ if __name__ == "__main__":
     mycursor = db.cursor()
 
     try:
-        mycursor.execute("SELECT * FROM states WHERE name = %s",(argv[4], ))
+        query = """
+        SELECT * FROM states WHERE name='{:s}' ORDER BY states.id
+        """
+        mycursor.execute(query.format(argv[4]))
         rows = mycursor.fetchone()
     except MySQLdb.Error as e:
         print(e)
