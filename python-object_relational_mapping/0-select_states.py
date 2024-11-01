@@ -3,10 +3,10 @@
 Connecting to database and listing it
 """
 
-import MySQLdb
-from sys import argv
-
 if __name__ == "__main__":
+    import MySQLdb
+    from sys import argv
+
     db = MySQLdb.connect(
         host = "localhost",
         port = 3306,
@@ -15,7 +15,6 @@ if __name__ == "__main__":
         database = argv[3]
     )
     mycursor = db.cursor()
-
     try:
         mycursor.execute("""SELECT * FROM states ORDER BY states.id""")
         data = mycursor.fetchall()
