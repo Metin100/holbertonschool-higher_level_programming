@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Connect to a database and list the first row where the name matches the provided argument.
+Connect to a database and list the rows where the name matches the provided argument.
 """
 
 import MySQLdb
@@ -17,16 +17,14 @@ if __name__ == "__main__":
     mycursor = db.cursor()
 
     try:
-        query = """
-        SELECT * FROM states WHERE name='{:s}' ORDER BY states.id
-        """
-        mycursor.execute(query.format(argv[4]))
+        query = "SELECT * FROM states WHERE name = %s ORDER BY id"
+        mycursor.execute(query, (argv[4],))
         rows = mycursor.fetchall()
     except MySQLdb.Error as e:
         print(e)
-    
-    for row in rows:
-        print(row)
+    else:
+        for row in rows:
+            print(row)
 
     mycursor.close()
     db.close()
