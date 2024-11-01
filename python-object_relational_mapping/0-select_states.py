@@ -1,28 +1,23 @@
 #!/usr/bin/python3
-"""
-Connecting to database and listing it
-"""
+"""Module for Selecting states"""
 
-if __name__ == "__main__":
-    import MySQLdb
+if __name__ == '__main__':
     from sys import argv
+    import MySQLdb
 
     db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=argv[1],
-            passwd=argv[2],
-            db=argv[3]
-            )
-    cur = db.cursor()
-    try:
-        cur.execute("""SELECT * FROM states ORDER BY id""")
-        rows = cur.fetchall()
-    except MySQLdb.Error as e:
-        print(e)
+        user=argv[1],
+        password=argv[2],
+        database=argv[3]
+    )
+    cursor = db.cursor()
 
-    for row in rows:
-        print(row)
+    cursor.execute('SELECT * FROM states')
 
-    cur.close()
-    db.close()
+    for state in cursor.fetchall():
+        print(state)
+
+    if cursor:
+        cursor.close()
+    if db:
+        db.close()
