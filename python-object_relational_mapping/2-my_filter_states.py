@@ -21,11 +21,12 @@ if __name__ == "__main__":
         SELECT * FROM states WHERE name='{:s}' ORDER BY states.id
         """
         mycursor.execute(query.format(argv[4]))
-        rows = mycursor.fetchone()
+        rows = mycursor.fetchall()
     except MySQLdb.Error as e:
         print(e)
-    else:
-        print(rows)
+    
+    for row in rows:
+        print(row)
 
     mycursor.close()
     db.close()
