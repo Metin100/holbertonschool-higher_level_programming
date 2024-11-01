@@ -12,7 +12,7 @@ if __name__ == "__main__":
         port = 3306,
         user = argv[1],
         passwd = argv[2],
-        database = argv[3]
+        db = argv[3]
     )
     mycursor = db.cursor()
     try:
