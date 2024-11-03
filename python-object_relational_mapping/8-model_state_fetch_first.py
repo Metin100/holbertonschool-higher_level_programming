@@ -24,4 +24,5 @@ if __name__ == "__main__":
     else:
         print("{}: {}".format(first_state.id, first_state.name))
 
-    session.close()
+    if session:
+        session.close()
