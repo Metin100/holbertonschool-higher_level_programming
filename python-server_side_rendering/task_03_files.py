@@ -58,7 +58,7 @@ def products():
         product_id = int(product_id)
         products = [p for p in products if p['id'] == product_id]
         if not products:
-            return render_template('product_display.html', error='id is not available')
+            return render_template('product_display.html', error='Product not found')
     return render_template('product_display.html', products=products)
     
 if __name__ == '__main__':
