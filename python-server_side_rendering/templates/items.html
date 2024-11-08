@@ -2,21 +2,24 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Items List</title>
 </head>
 
 <body>
+    <h1>Items List</h1>
     {% if items %}
-    <nav>
         <ul>
-            {for item in items}
+            {% for item in items %}
                 <li>{{item}}</li>
             {% endfor %}
         </ul>
-    </nav>
+
     {% else %}
-    <div>No items found</div>
+        <p>No items found</p>
     {% endif %}
+
 </body>
 
 </html>
