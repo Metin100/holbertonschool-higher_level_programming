@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Items List</title>
+</head>
+
+<body>
+    {% if items %}
+    <nav>
+        <ul>
+            {for item in items}
+                <li>{{item}}</li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% else %}
+    <div>No items found</div>
+    {% endif %}
+</body>
+
+</html>
